@@ -1,0 +1,874 @@
+/* ==========================================================================
+   --------------- POLICES-------------
+   ========================================================================== */
+@font-face {
+    font-family: 'Albert Sans';
+    src: url('../font/AlbertSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: 'Albert Sans';
+    src: url('../font/AlbertSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../font/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../font/CormorantGaramond-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap
+}
+
+/* ==========================================================================
+   --------------- VARIABLES ------------- 
+   ========================================================================== */
+:root {
+    --bg-color: #0a0a0a;
+    --black: #000000;
+    --white: #FFFFFF;
+    --text-color: #FCF4C7;
+    --hover-color: #868686;
+    --border-color: rgba(255, 255, 255, 1);
+
+    --line: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+    --line1: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+    --line2: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+
+    --font-serif: 'Cormorant Garamond';
+    --font-sans: 'Albert Sans';
+
+    --pad-sm: 22px;
+    --pad-md: 48px;
+    --pad-lg: 88px;
+    --container: 1200px;
+
+    --fs-h1: clamp(2.4rem, 7vw, 5.6rem);
+    --fs-h2: clamp(1.05rem, 1.6vw, 1.25rem);
+    --fs-body: clamp(0.95rem, 0.9vw, 1.05rem);
+    --fs-meta: clamp(0.75rem, 0.7vw, 0.9rem);
+    --proj-h1: clamp(3rem, 6vw, 4.6rem);
+    --proj-meta: clamp(0.6rem, 1vw, 0.8rem);
+}
+
+/* ==========================================================================
+   --------------- STRUCTURE (BASE MOBILE-FIRST) ------------- 
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    overflow-x: hidden;
+}
+
+a,
+button {
+    text-decoration: none;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+}
+
+img,
+picture,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+.progress-bar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background-color: var(--text-color);
+    opacity: 0.9;
+    z-index: 9999;
+}
+
+.container {
+    max-width: var(--container);
+    margin-inline: auto;
+}
+
+.page-pad {
+    padding-inline: var(--pad-sm);
+}
+
+@media (min-width: 768px) {
+    .page-pad {
+        padding-inline: var(--pad-md);
+    }
+}
+
+@media (min-width: 1280px) {
+    .page-pad {
+        padding-inline: var(--pad-lg);
+    }
+}
+
+/* ==========================================================================
+   --------------- 0. SECTION HEADER (MOBILE-FIRST) ------------- 
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    padding: 0 var(--pad-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    z-index: 1000;
+    background: var(--black);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.reveal-logo {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-8px);
+
+    animation: revealLogo 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.2s;
+
+    will-change: transform, opacity;
+}
+
+@keyframes revealLogo {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style de base de la Navigation : Écran Mobile */
+header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: var(--black);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-right: 70px;
+    gap: 20px;
+
+    clip-path: ellipse(0% 150% at 100% 50%);
+    overflow: hidden;
+
+    transition: clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+
+    z-index: 1050;
+    pointer-events: none;
+}
+
+header nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-left: 0;
+    padding-right: 10px;
+    display: inline-block;
+    opacity: 0;
+    will-change: transform, opacity;
+    transform: translateY(-8px);
+    animation: revealNAV 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+header nav a:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+header nav a:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+header nav a:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes revealNAV {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+nav a:hover {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Menu Burger Mobile obligatoire */
+#burger-check,
+.hamburger {
+    display: none;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 13px;
+    cursor: pointer;
+    z-index: 1100;
+    position: relative;
+}
+
+.bar {
+    width: 100%;
+    height: 1px;
+    background-color: var(--white);
+    transition: all 0.4s ease;
+}
+
+#burger-check:checked~nav {
+    clip-path: ellipse(150% 150% at 100% 50%);
+    pointer-events: auto;
+}
+
+#burger-check:checked~.hamburger .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+#burger-check:checked~.hamburger .bar:nth-child(2) {
+    opacity: 0;
+}
+
+#burger-check:checked~.hamburger .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- ADAPTATION DESKTOP POUR LE HEADER --- */
+@media (min-width: 768px) {
+    header {
+        padding: 0 var(--pad-md);
+    }
+
+    .hamburger,
+    #burger-check {
+        display: none !important;
+    }
+
+    header nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        display: flex;
+        padding-right: 0;
+        gap: 0;
+        clip-path: none;
+        pointer-events: auto;
+    }
+
+    header nav a {
+        font-size: 12px;
+        margin-left: 28px;
+        letter-spacing: 2px;
+        padding-right: 0;
+        transform: none;
+
+    }
+}
+
+@media (min-width: 1024px) {
+    nav a {
+        margin-left: 45px;
+    }
+}
+
+@media (min-width: 1280px) {
+    header {
+        padding: 0 var(--pad-lg);
+    }
+}
+
+/* ==========================================================================
+   --------------- 1. SECTION HERO ------------- 
+   ========================================================================== */
+.reveal-mask {
+    overflow: hidden;
+    display: block;
+}
+
+.reveal-text {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(44px);
+    animation: revealUp 1.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes revealUp {
+    0% {
+        opacity: 0;
+        transform: translateX(44px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.hero {
+    padding: 120px var(--pad-sm) 48px;
+}
+
+
+h1.hero-title .reveal-text {
+    font-family: var(--font-sans);
+    font-size: var(--fs-h1);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-style: normal;
+}
+
+.hero-title span {
+    font-family: var(--font-serif);
+    font-style: italic;
+}
+
+.hero-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 72px;
+    margin-bottom: 72px;
+}
+
+.hero-col-right {
+    position: relative;
+}
+
+.hero-col-right p {
+    position: relative;
+    padding-left: 16px;
+    width: 100%;
+    font-size: var(--fs-h2);
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0, 2px;
+    font-family: var(--font-serif);
+    margin-bottom: 0;
+}
+
+.divider-line {
+    width: 0;
+    height: 1px;
+    background: var(--line);
+
+    animation: extendLine 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.15s;
+
+    will-change: width;
+}
+
+@keyframes extendLine {
+    to {
+        width: 100%;
+    }
+}
+
+.divider-line2 {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 1px;
+    height: 0;
+
+    background: var(--line2);
+
+    animation: extendVertical 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.3s;
+
+    will-change: height;
+
+    z-index: 5;
+}
+
+@keyframes extendVertical {
+    to {
+        height: 100%;
+    }
+}
+
+.next-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.txt-label {
+    font-family: var(--font-sans);
+    font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--white);
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+/* --- ADAPTATION DESKTOP POUR HERO --- */
+@media (min-width: 768px) {
+    .hero {
+        padding: 140px var(--pad-md) 60px;
+    }
+
+    .hero-details {
+        grid-template-columns: 1.2fr 0.8fr;
+        margin-top: 96px;
+        margin-bottom: 96px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .hero {
+        padding: 160px var(--pad-lg) 72px;
+    }
+
+    .hero-details {
+        margin-top: 120px;
+        margin-bottom: 120px;
+    }
+}
+
+/* ==========================================================================
+   --------------- 2. SECTION GALLERY ------------- 
+   ========================================================================== */
+.gallery {
+    padding: 0 var(--pad-sm);
+    margin-bottom: 120px;
+    max-width: 1600px;
+    margin-inline: auto;
+}
+
+.filter-nav {
+    opacity: 0;
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    margin-bottom: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.filter-nav.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.filter-btn {
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    opacity: 0.55;
+    transition: 0.2s;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.filter-btn:hover {
+    opacity: 1;
+    color: var(--text-color);
+}
+
+.filter-btn.active {
+    opacity: 1;
+    border-bottom: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding-bottom: 2px;
+}
+
+.grid-layout {
+    display: block; /* Supprime le grid-template qui bloquait tout */
+    column-count: 1; /* 1 colonne par défaut sur mobile */
+    column-gap: 20px; /* Espace horizontal entre vos colonnes */
+    width: 100%;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    break-inside: avoid;
+    opacity: 0;
+    transform: translateY(12px);
+margin-bottom: 20px; /* Espace vertical entre les cartes projets */
+    transition:
+        opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+    display: block;
+
+}
+/* Par défaut sur mobile, on peut garder un aspect assez homogène pour la lisibilité */
+.grid-item.tall img {
+    aspect-ratio: 4 / 5;
+}
+.grid-item.portrait img {
+    aspect-ratio: 4 / 5;
+}
+.grid-item.square img {
+    aspect-ratio: 1 / 1;
+}
+.grid-item.wide img {
+    aspect-ratio: 16 / 10; /* Un peu plus horizontal */
+}
+
+.grid-item img {
+width: 100%;
+    height: 100%; /* Important : pour remplir le container du ratio */
+    object-fit: cover; /* Recadre proprement sans déformer l'image */
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.grid-item a {
+    display: block;
+    width: 100%;
+    height: auto;
+
+}
+
+/* --- ADAPTATION DESKTOP POUR LA GALERIE --- */
+@media (min-width: 768px) {
+    .gallery {
+        padding: 0 var(--pad-lg);
+    }
+
+    /* On utilise un système à deux colonnes équilibrées au lieu de l'auto-fit instable */
+    .grid-layout {
+        column-count: 2;
+        /* Passage automatique à 2 colonnes asymétriques */
+        gap: 17px;
+    }
+
+.grid-item {
+        margin-bottom: 17px; /* Aligne l'espace vertical avec le column-gap */
+    }
+
+/* Format ultra élancé (comme les visuels de votre page projet) */
+    .grid-item.tall img {
+        aspect-ratio: 6 / 9; 
+    }
+
+    /* Portrait classique et élégant */
+    .grid-item.portrait img {
+        aspect-ratio: 4 / 5;
+    }
+
+    /* Bloc carré stable */
+    .grid-item.square img {
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Bloc panoramique horizontal qui va forcer le projet suivant à remonter très haut */
+    .grid-item.wide img {
+        aspect-ratio:4 / 3;
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-layout {
+        column-gap: 20px;
+    }
+
+    .grid-item {
+        margin-bottom: 20px;
+    }
+
+    .gallery {
+        padding: 0 var(--pad-lg);
+    }
+
+}
+
+@media (min-width: 1280px) {}
+
+.grid-item.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto;
+}
+
+.grid-item.filtering-out {
+    display: none !important;
+}
+
+.grid-item.hidden {
+    display: none;
+}
+
+.grid-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.grid-item:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.grid-item:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+/* ==========================================================================
+   PERFECTIONNEMENT DE L'OVERLAY DE LA GALERIE D'ACCUEIL
+   ========================================================================== */
+.item-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    /* Caché par défaut */
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    /* Transition pour l'apparition en fondu */
+    transition: opacity 0.5s ease;
+    z-index: 2;
+}
+
+.divider-line3 {
+    background: var(--line);
+    width: 24px;
+    height: 1px;
+}
+
+.category {
+    font-size: 10px;
+    font-family: var(--font-sans);
+    letter-spacing: 1px;
+    font-weight: 520;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+color: var(--white);}
+
+.project-name {
+    font-family: var(--font-sans);
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 590;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.project-date {
+    font-family: var(--font-sans); /* Passage en Sans-Serif pour le mobile */
+    font-style: italic;
+    font-weight: 300;
+    font-size: 10px; /* Légèrement réhaussé pour le mobile */
+    letter-spacing: 1.5px;
+    text-transform: uppercase; /* Donne un côté plus propre et moderne */
+    color: rgba(255, 255, 255, 0.637); /* Un blanc semi-transparent beaucoup plus lumineux que le gris actuel */
+    display: block;
+    margin-top: 2px;
+}
+
+/* Effets au survol exclusifs aux ordinateurs */
+@media (hover: hover) and (min-width: 1025px) {
+    .grid-item img {
+        transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+    }
+
+    .grid-item:hover img {
+        transform: scale(1.03);
+    }
+
+    .grid-item:hover .item-overlay {
+        opacity: 1;
+    }
+}
+
+/* Sécurité et lisibilité automatique pour les écrans tactiles & mobiles */
+@media (max-width: 1024px), (hover: none) {
+    .item-overlay {
+        opacity: 1; /* Reste visible en permanence sur smartphone pour éviter de perdre l'info */
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
+        padding: 20px;
+    }
+    .project-name {
+        font-size: 1.1rem;
+    }
+}
+
+/* ==========================================================================
+   --------------- 3. SECTION FOOTER ------------- 
+   ========================================================================== */
+footer {
+    border-top: 1px solid white;
+    padding: 16px var(--pad-sm);
+}
+
+.footer-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    letter-spacing: 1.2px;
+}
+
+.f-logo {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    width: fit-content;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 6px;
+}
+
+.f-col a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.f-col1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.f-sub {
+    line-height: 1.4;
+}
+
+.f-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    width: fit-content;
+    color: var(--white);
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 6px;
+}
+
+.footer-wrap a,
+.footer-wrap p {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* --- ADAPTATION DESKTOP POUR LE FOOTER --- */
+@media (min-width: 768px) {
+    footer {
+        padding: 20px var(--pad-md);
+    }
+
+    .footer-wrap {
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1280px) {
+    footer {
+        padding: 24px var(--pad-lg);
+    }
+}
+
+@media (hover: hover) {
+    .f-col a:hover {
+        opacity: 0.7;
+        transform: translateX(2px);
+    }
+}
+
+/* ==========================================================================
+   --------------- LOGIQUE TAXTILE / NO-HOVER ------------- 
+   ========================================================================== */
+@media (hover: none) {
+
+    .grid-item:hover img,
+    .project-item:hover img {
+        transform: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    .grid-item .item-overlay {
+        opacity: 1 !important;
+    }
+
+    .next-project-link:hover .next-image-container {
+        transform: translate(-50%, -50%) translateX(0) !important;
+        opacity: 1 !important;
+    }
+}

@@ -1,0 +1,198 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alice Auger | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="progress-bar"></div>
+    <header>
+        <div class="logo">
+            <div class="reveal-mask">
+                <a href="index.html" class="reveal-logo">ALICE AUGER</a>
+            </div>
+        </div>
+
+        <input type="checkbox" id="burger-check">
+        <label for="burger-check" class="hamburger" aria-label="Ouvrir le menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
+
+        <nav aria-label="Navigation principale">
+            <a href="apropos.html">À PROPOS</a>
+            <a href="services.html">SERVICES</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">
+                <span class="reveal-mask">
+                    <span class="reveal-text">L'empreinte <br>d'un <br>savoir-faire</span>
+                </span>
+            </h1>
+            <div class="hero-details">
+                <div class="hero-col-left"></div>
+                <div class="hero-col-right">
+                    <div class="divider-line2"></div>
+                    <div class="reveal-mask">
+                        <p class="reveal-text">
+                            Je développe des projets où le geste, la matière et la technique occupent une place
+                            centrale. Chaque réalisation naît d’un contexte, d’une contrainte ou d’une rencontre, pour
+                            donner forme à des expériences uniques et sur mesure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="next-label" id="portfolio">
+                <span class="txt-label">Choix du projet</span>
+                <div class="divider-line"></div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="filter-nav">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="graphisme">Graphisme</button>
+                <button class="filter-btn" data-filter="artisanat">Artisanat</button>
+            </div>
+
+            <div class="grid-layout">
+
+                <!-- PROJET 1. VOLATILES -->
+                <div class="grid-item tall artisanat">
+                    <a href="projets.html?id=volatiles">
+                        <img src="image/home/vol-2.webp" loading="lazy" alt="Volatiles">
+                        <div class="item-overlay">
+                            <div class="category">
+                                <span>Artisanat</span>
+                                <div class="divider-line3"></div>
+                            </div>
+                            <div>
+                                <h3 class="project-name">Volatiles</h3>
+                                <span class="project-date">2025-2026</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- PROJET 2. LVMH -->
+                <div class="grid-item portrait artisanat">
+                    <a href="projets.html?id=lvmh">
+                        <img src="image/home/GLH-9.webp" loading="lazy" alt="Animation Gravure">
+                        <div class="item-overlay">
+                            <div class="category">
+                                <span>Artisanat</span>
+                                <div class="divider-line3"></div>
+                            </div>
+                            <div>
+                                <h3 class="project-name">Partout à Paris</h3>
+                                <span class="project-date">depuis 2019</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- PROJET 3. LUCIE ALLARD -->
+                <div class="grid-item square graphisme">
+                    <a href="projets.html?id=lucie-allard">
+                        <img src="image/home/logo.webp" loading="lazy" alt="Lucie Allard Design">
+                        <div class="item-overlay">
+                            <div class="category">
+                                <span>Graphisme</span>
+                                <div class="divider-line3"></div>
+                            </div>
+                            <div>
+                                <h3 class="project-name">Lucie Allard</h3>
+                                <span class="project-date">2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- PROJET 4. THUIZAT -->
+                <div class="grid-item square artisanat">
+                    <a href="projets.html?id=signature">
+                        <img src="image/home/thuizat.webp" loading="lazy" alt="Gravure Carafe">
+                        <div class="item-overlay">
+                            <div class="category">
+                                <span>Artisanat</span>
+                                <div class="divider-line3"></div>
+                            </div>
+                            <div>
+                                <h3 class="project-name">Gravure Signature</h3>
+                                <span class="project-date">2025</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- PROJET 5. PERSO -->
+                <div class="grid-item portrait artisanat">
+                    <a href="projets.html?id=particulier">
+                        <img src="image/home/client-illu(3).webp" loading="lazy" alt="Design & Artisanat">
+                        <div class="item-overlay">
+                            <div class="category">
+                                <span>Artisanat</span>
+                                <div class="divider-line3"></div>
+                            </div>
+                            <div>
+                                <h3 class="project-name">Conception particulière</h3>
+                                <span class="project-date">depuis 2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                          <!-- PROJET 6. HIBOU -->
+                <div class="grid-item portrait graphisme">
+                    <a href="projets.html?id=hibou">
+                        <img src="image/projets/archi/archi-1.webp" loading="lazy" alt="Conception de posters illustrés sur l'univers du vin ">
+                        <div class="item-overlay">
+                            <div class="category">
+                                <span>Graphisme</span>
+                                <div class="divider-line3"></div>
+                            </div>
+                            <div>
+                                <h3 class="project-name">Posters Illustrés</h3>
+                                <span class="project-date">2025</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>
+    </main>
+
+    <footer>
+        <div class="footer-wrap">
+            <div class="f-col">
+                <div class="f-logo">ALICE AUGER</div>
+                <p class="f-sub">Paris, France<br>Design & Artisanat</p>
+            </div>
+            <div class="f-col">
+                <h2 class="f-title">CONTACT</h2>
+                <a href="https://instagram.com" target="_blank" rel="noopener">→ Instagram</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener">→ LinkedIn</a>
+                <a href="https://behance.net" target="_blank" rel="noopener">→ Behance</a>
+            </div>
+            <div class="f-col1">
+                <p>mail@hotmail.com</p>
+                <p>+33 6 54 88 25 44</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
