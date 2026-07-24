@@ -101,12 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nextLink) {
             nextLink.setAttribute('href', targetUrl);
 
-            // ACTION CRUCIALE : On force le navigateur à ouvrir l'URL comme une NOUVELLE page 
-            // pour l'obliger à créer une étape de retour dans son historique.
-            nextLink.onclick = function (e) {
-                e.preventDefault();
-                window.location.href = targetUrl;
-            };
+    
         }
 
         if (nextTitle) {
