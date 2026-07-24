@@ -8,15 +8,21 @@
    ========================================================================== */
 
 .project-hero {
-    padding: 120px var(--pad-sm) 48px;
+    padding: 78px var(--pad-sm) 48px;
+
 }
 
 .project-title-area {
     display: block;
     /* Mobile : tout empilé verticalement */
     width: 100%;
-}
 
+
+}
+.projet-category{
+     font-weight: 200;
+         letter-spacing: 0.2em;
+}
 .name-project {
     font-family: var(--font-sans);
     font-size: clamp(2rem, 10vw, 5rem);
@@ -27,14 +33,17 @@
     color: var(--text-color);
     margin-bottom: 1.5rem;
     white-space: pre-line;
+        padding-top: 10px;
 }
 
 .project-details {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 3px;
     padding-left: 0;
-    margin-top: 24px;
+    margin-top: 30px;
+    padding-bottom: 80px;
+
 }
 
 .reveal-right {
@@ -53,22 +62,26 @@
 }
 
 
+/* YEAR TYPE ETC */
 .meta-label {
     font-family: var(--font-sans);
     font-size: var(--fs-meta);
-    color: #666;
-    font-weight: 600;
+    color: #888;
+    font-weight: 540;
     text-transform: uppercase;
     letter-spacing: 2px;
+    /* Espace sous la catégorie avant le grand titre */
+    display: block;
 }
 
 .meta-value {
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 200;
     font-size: clamp(0.7rem, 2vw, 0.95rem);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
+
 }
 
 .description-text {
@@ -153,22 +166,35 @@
 /* ==========================================================================
    3. BOUTON RETOUR
    ========================================================================== */
-
 .back-btn {
-    position: absolute;
-    top: 90px;
-    left: var(--pad-sm);
-    z-index: 100;
-    text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: #a7a6a6;
-    display: flex;
+    position: relative;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    /* REGLAGE HAUTEUR & ESPACES */
+    margin-top: 105px;        /* Réduit (au lieu de 100px) pour se rapprocher du header */
+    margin-left: var(--pad-sm);
+margin-bottom: -20px; /* au lieu de -60px */
+    /* Style du texte */
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #a7a6a6;
+    z-index: 10;
+
+    /* Zone tactile préservée */
+    padding: 10px 16px;
+    transform: translateX(-16px);
+
+    transition: opacity 0.3s ease, color 0.3s ease;
 }
+
+.back-btn:active {
+    opacity: 0.5;
+}
+
 
 /* ==========================================================================
    4. NAVIGATION FIN DE PAGE
@@ -237,25 +263,28 @@
 .next-project-link {
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important; /* Force le centrage horizontal du texte */
+    justify-content: center !important;
+    /* Force le centrage horizontal du texte */
     position: relative !important;
     width: 100% !important;
-height: auto !important; /* Laisse le padding gérer la hauteur */
-    padding: 60px 0 !important; /* Crée l'espace entre le contenu et les lignes haute/basse */
-    margin: 40px auto  !important;
+    height: auto !important;
+    /* Laisse le padding gérer la hauteur */
+    padding: 60px 0 !important;
+    /* Crée l'espace entre le contenu et les lignes haute/basse */
+    margin: 40px auto !important;
     cursor: pointer !important;
     overflow: hidden !important;
     text-decoration: none !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     background: #000000 !important;
-    
+
     /* Animation d'apparition fluide au scroll */
     opacity: 0;
     transform: translateY(40px);
     transition: border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .next-project-link.is-visible {
@@ -268,7 +297,7 @@ height: auto !important; /* Laisse le padding gérer la hauteur */
     position: relative !important;
     top: auto !important;
     left: auto !important;
-    transform: none !important; 
+    transform: none !important;
     z-index: 10 !important;
     text-align: center !important;
     pointer-events: none !important;
@@ -284,7 +313,7 @@ height: auto !important; /* Laisse le padding gérer la hauteur */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0px; 
+    gap: 0px;
     height: 14px !important;
     margin-bottom: 14px !important;
     transition: gap 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
@@ -308,23 +337,24 @@ height: auto !important; /* Laisse le padding gérer la hauteur */
     stroke-width: 1.2 !important;
     transform: translateX(-6px) !important;
     opacity: 0 !important;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                opacity 0.6s ease, 
-                stroke 0.8s ease !important;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.6s ease,
+        stroke 0.8s ease !important;
 }
 
 .next-title {
     font-family: var(--font-sans) !important;
     font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
-    font-weight: 400 !important; /* Légèrement plus épais pour mieux apprécier la découpe de l'image */
+    font-weight: 400 !important;
+    /* Légèrement plus épais pour mieux apprécier la découpe de l'image */
     text-transform: uppercase !important;
     color: rgba(255, 255, 255, 0.85) !important;
     margin: 0 !important;
     letter-spacing: 2px !important;
     /* Ajout des transitions pour l'effet pochoir */
-    transition: background 0.6s ease, 
-                color 0.6s ease, 
-                letter-spacing 1.2s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transition: background 0.6s ease,
+        color 0.6s ease,
+        letter-spacing 1.2s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 /* CADRE DE L'IMAGE : Parfaitement superposé et centré */
@@ -332,17 +362,19 @@ height: auto !important; /* Laisse le padding gérer la hauteur */
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
-    transform: translate(-50%, -50%) scale(0.97) !important; 
-    width: 100% !important; 
-max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit "boîte" élégant */
-    height: 180px !important; /* Hauteur augmentée */
+    transform: translate(-50%, -50%) scale(0.97) !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    /* Limite la largeur maximale pour garder l'esprit "boîte" élégant */
+    height: 180px !important;
+    /* Hauteur augmentée */
     z-index: 1 !important;
     overflow: hidden !important;
-    opacity: 0 !important; 
+    opacity: 0 !important;
     mask-image: none !important;
     -webkit-mask-image: none !important;
-    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), 
-                transform 1s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 1s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 .next-image-container img {
@@ -353,7 +385,7 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
     object-position: center !important;
     filter: brightness(45%) grayscale(10%) !important;
     transition: transform 1.6s cubic-bezier(0.25, 1, 0.5, 1),
-                filter 1.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        filter 1.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
 /* ==========================================================================
@@ -362,7 +394,7 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
 
 @media (min-width: 768px) {
     .project-hero {
-        padding: 140px var(--pad-md) 60px;
+        padding: 90px var(--pad-md) 60px;
     }
 
     .project-grid {
@@ -393,8 +425,8 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
     }
 
     .back-btn {
-        left: var(--pad-md);
-        top: 100px;
+     margin-left: var(--pad-md);
+        margin-top: 110px;
     }
 
     .project-footer-nav {
@@ -423,15 +455,18 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
         letter-spacing: 2px;
     }
 
-   .next-content-wrapper {
-  left: auto !important; /* Correction pour laisser le centrage flex total */
+    .next-content-wrapper {
+        left: auto !important;
+        /* Correction pour laisser le centrage flex total */
     }
+
     /* AJOUT : On agrandit le conteneur parent pour matcher l'image sur desktop */
-.next-project-link {
-        width: 100% !important;  
-        padding: 90px 0 !important; /* Augmente l'espace haut/bas sur grand écran */
+    .next-project-link {
+        width: 100% !important;
+        padding: 90px 0 !important;
+        /* Augmente l'espace haut/bas sur grand écran */
     }
-    
+
 }
 
 /* ==========================================================================
@@ -484,16 +519,20 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
     }
 
     .next-content-wrapper {
-  left: auto !important; /* Correction pour laisser le centrage flex total */
+        left: auto !important;
+        /* Correction pour laisser le centrage flex total */
     }
+
     /* AJOUT : On agrandit le conteneur parent pour matcher l'image sur desktop */
-.next-project-link {
-        width: 100% !important;  
-        padding: 90px 0 !important; /* Augmente l'espace haut/bas sur grand écran */
+    .next-project-link {
+        width: 100% !important;
+        padding: 90px 0 !important;
+        /* Augmente l'espace haut/bas sur grand écran */
     }
-    
+
     .next-image-container {
-        max-width: 600px !important; /* Image encore plus grande sur ordinateur */
+        max-width: 600px !important;
+        /* Image encore plus grande sur ordinateur */
         height: 210px !important;
     }
 }
@@ -505,7 +544,7 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
 
 @media (min-width: 1280px) {
     .project-hero {
-        padding: 180px var(--pad-lg) 80px;
+        padding: 90px var(--pad-lg) 80px;
     }
 
     .description-text {
@@ -521,14 +560,14 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
 @media (hover: hover) and (min-width: 1024px) {
     .next-project-link {
         border-color: rgba(255, 255, 255, 0.18) !important;
-    
+
     }
 
     /* Révèle doucement la boîte d'image à 50% d'opacité globale */
     .next-project-link:hover .next-image-container {
-        opacity: 0.5 !important; 
+        opacity: 0.5 !important;
         transform: translate(-50%, -50%) scale(1) !important;
-        
+
     }
 
     .next-project-link:hover .meta-container {
@@ -544,13 +583,15 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
         transform: translateX(0) !important;
         stroke: var(--white) !important;
     }
-.next-project-link:hover .next-image-container {
-        opacity: 0.5 !important; 
-        transform: translate(-50%, -50%) scale(0.92) !important; 
+
+    .next-project-link:hover .next-image-container {
+        opacity: 0.5 !important;
+        transform: translate(-50%, -50%) scale(0.92) !important;
     }
+
     .next-project-link:hover .next-title {
-            color: var(--text-color) !important;
-            letter-spacing: 3px !important;
+        color: var(--text-color) !important;
+        letter-spacing: 3px !important;
     }
 
     /* Éclaire délicatement et zoome la photo en arrière-plan */
@@ -565,21 +606,22 @@ max-width: 500px !important; /* Limite la largeur maximale pour garder l'esprit 
    ========================================================================== */
 @media (max-width: 1023px) {
     .next-image-container {
-        width: 440px !important; 
-        max-width: 90vw !important; 
+        width: 440px !important;
+        max-width: 90vw !important;
         height: 220px !important;
-        max-height: 45vw !important; 
-        opacity: 0.5 !important; 
+        max-height: 45vw !important;
+        opacity: 0.5 !important;
         transform: translate(-50%, -50%) scale(1) !important;
     }
-    
+
     .next-image-container img {
-        filter: brightness(30%) grayscale(20%) !important; 
+        filter: brightness(30%) grayscale(20%) !important;
     }
-    
+
     .next-title {
-        font-size: clamp(1.3rem, 5vw, 2.2rem) !important; 
+        font-size: clamp(1.3rem, 5vw, 2.2rem) !important;
         color: #ffffff !important;
     }
-} /* <--- La dernière accolade doit fermer le media query, pas de } en plus après ! */
-    
+}
+
+/* <--- La dernière accolade doit fermer le media query, pas de } en plus après ! */
