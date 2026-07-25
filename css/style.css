@@ -1,12 +1,12 @@
 /* ==========================================================================
-   --------------- POLICES-------------
+   --------------- POLICES -------------
    ========================================================================== */
 @font-face {
     font-family: 'Albert Sans';
     src: url('../font/AlbertSans-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
-    font-display: swap
+    font-display: swap;
 }
 
 @font-face {
@@ -14,7 +14,7 @@
     src: url('../font/AlbertSans-Italic-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: italic;
-    font-display: swap
+    font-display: swap;
 }
 
 @font-face {
@@ -22,7 +22,7 @@
     src: url('../font/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
-    font-display: swap
+    font-display: swap;
 }
 
 @font-face {
@@ -30,7 +30,7 @@
     src: url('../font/CormorantGaramond-Italic-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: italic;
-    font-display: swap
+    font-display: swap;
 }
 
 /* ==========================================================================
@@ -76,7 +76,6 @@
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-
 }
 
 body {
@@ -154,20 +153,37 @@ header {
 }
 
 .logo {
-    font-weight: 800;
     font-size: 15px;
     letter-spacing: 2px;
 }
 
+/* Par défaut (Mobile ET Tablette) : la tagline est SOUS le nom */
 .reveal-logo {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     opacity: 0;
     transform: translateY(-8px);
-
     animation: revealLogo 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     animation-delay: 0.2s;
-
     will-change: transform, opacity;
+}
+
+.logo-title {
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.header-tagline {
+    display: block;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: var(--hover-color);
+    text-transform: none;
+    margin-left: 0;
+    margin-top: 2px;
+    line-height: 1.2;
 }
 
 @keyframes revealLogo {
@@ -175,14 +191,12 @@ header {
         opacity: 0;
         transform: translateY(-8px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Style de base de la Navigation : Écran Mobile */
 header nav {
     position: fixed;
     top: 0;
@@ -190,19 +204,14 @@ header nav {
     width: 100%;
     height: 70px;
     background: var(--black);
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
     padding-right: 70px;
     gap: 20px;
-
     clip-path: ellipse(0% 150% at 100% 50%);
     overflow: hidden;
-
     transition: clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1);
-
     z-index: 1050;
     pointer-events: none;
 }
@@ -223,24 +232,15 @@ header nav a {
     animation-delay: 0.2s;
 }
 
-header nav a:nth-child(1) {
-    animation-delay: 0.4s;
-}
-
-header nav a:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-header nav a:nth-child(3) {
-    animation-delay: 0.6s;
-}
+header nav a:nth-child(1) { animation-delay: 0.4s; }
+header nav a:nth-child(2) { animation-delay: 0.5s; }
+header nav a:nth-child(3) { animation-delay: 0.6s; }
 
 @keyframes revealNAV {
     from {
         opacity: 0;
         transform: translateY(-8px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -252,7 +252,6 @@ nav a:hover {
     font-weight: 600;
 }
 
-/* Menu Burger Mobile obligatoire */
 #burger-check,
 .hamburger {
     display: none;
@@ -293,7 +292,7 @@ nav a:hover {
     transform: translateY(-9px) rotate(-45deg);
 }
 
-/* --- ADAPTATION DESKTOP POUR LE HEADER --- */
+/* TABLETTE (768px+) : Le menu s'ouvre, MAIS la tagline reste sous le nom */
 @media (min-width: 768px) {
     header {
         padding: 0 var(--pad-md);
@@ -317,18 +316,36 @@ nav a:hover {
     }
 
     header nav a {
-        font-size: 12px;
-        margin-left: 28px;
-        letter-spacing: 2px;
+        font-size: 11px;
+        margin-left: 20px;
+        letter-spacing: 1.5px;
         padding-right: 0;
         transform: none;
-
     }
 }
 
+/* VRAI DESKTOP (1024px+) : La tagline repasse à côté du nom avec le tiret */
 @media (min-width: 1024px) {
-    nav a {
-        margin-left: 45px;
+    .reveal-logo {
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .header-tagline {
+        font-size: 11px;
+        letter-spacing: 1px;
+        margin-left: 8px;
+        margin-top: 0;
+    }
+
+    .header-tagline::before {
+        content: "— ";
+    }
+
+    header nav a {
+        font-size: 12px;
+        margin-left: 35px;
+        letter-spacing: 2px;
     }
 }
 
@@ -359,22 +376,21 @@ nav a:hover {
         opacity: 0;
         transform: translateX(44px);
     }
-
     100% {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
-
 .hero {
-    padding: 120px var(--pad-sm) 48px;
+    padding: 140px var(--pad-sm) 58px;
+   
+    
 }
-
 
 h1.hero-title .reveal-text {
     font-family: var(--font-sans);
-    font-size: var(--fs-h1);
+    font-size: clamp(2.6rem, 8.5vw, 6.2rem);
     line-height: 0.95;
     letter-spacing: -0.02em;
     font-weight: 600;
@@ -385,19 +401,24 @@ h1.hero-title .reveal-text {
 
 .hero-title span {
     font-family: var(--font-serif);
-    font-style: italic;
+    font-style: italic; 
 }
 
 .hero-details {
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
-    margin-top: 72px;
-    margin-bottom: 72px;
+    margin-top: 42px;
+    margin-bottom: 120px;
+}
+
+.hero-col-left {
+    display: none;
 }
 
 .hero-col-right {
     position: relative;
+    padding-bottom: 18px;
 }
 
 .hero-col-right p {
@@ -405,12 +426,10 @@ h1.hero-title .reveal-text {
     padding-left: 16px;
     width: 100%;
     font-size: var(--fs-h2);
-    letter-spacing: 0.02em;
     color: rgba(255, 255, 255, 0.8);
     font-style: italic;
     font-weight: 400;
-    line-height: 1.55;
-    letter-spacing: 0, 2px;
+    line-height: 1.5;
     font-family: var(--font-serif);
     margin-bottom: 0;
 }
@@ -419,10 +438,8 @@ h1.hero-title .reveal-text {
     width: 0;
     height: 1px;
     background: var(--line);
-
     animation: extendLine 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     animation-delay: 0.15s;
-
     will-change: width;
 }
 
@@ -437,17 +454,12 @@ h1.hero-title .reveal-text {
     position: absolute;
     left: 0;
     top: 0;
-
     width: 1px;
     height: 0;
-
     background: var(--line2);
-
     animation: extendVertical 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     animation-delay: 0.3s;
-
     will-change: height;
-
     z-index: 5;
 }
 
@@ -473,28 +485,50 @@ h1.hero-title .reveal-text {
     text-transform: uppercase;
 }
 
-/* --- ADAPTATION DESKTOP POUR HERO --- */
 @media (min-width: 768px) {
     .hero {
         padding: 140px var(--pad-md) 60px;
     }
 
+
+
     .hero-details {
+        display: grid;
         grid-template-columns: 1.2fr 0.8fr;
-        margin-top: 96px;
-        margin-bottom: 96px;
+
     }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
     .hero {
         padding: 160px var(--pad-lg) 72px;
+        display: flex;
+        flex-direction: column;
     }
 
-    .hero-details {
-        margin-top: 120px;
-        margin-bottom: 120px;
+    .hero-title {
+        width: 100%;
     }
+
+
+
+    .hero-col-left {
+        display: block;
+        
+    }
+
+    
+    
+    .hero-col-right  {
+     
+        max-width: 520px;
+    }
+
+    .hero-col-right p {
+        padding-left: 30px;
+        max-width: 520px;
+    }
+ 
 }
 
 /* ==========================================================================
@@ -510,10 +544,7 @@ h1.hero-title .reveal-text {
 .filter-nav {
     opacity: 0;
     transform: translateY(10px);
-
-    transition:
-        opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
-        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     margin-bottom: 32px;
     display: flex;
     flex-wrap: wrap;
@@ -549,9 +580,9 @@ h1.hero-title .reveal-text {
 }
 
 .grid-layout {
-    display: block; /* Supprime le grid-template qui bloquait tout */
-    column-count: 1; /* 1 colonne par défaut sur mobile */
-    column-gap: 20px; /* Espace horizontal entre vos colonnes */
+    display: block;
+    column-count: 1;
+    column-gap: 20px;
     width: 100%;
 }
 
@@ -563,79 +594,48 @@ h1.hero-title .reveal-text {
     break-inside: avoid;
     opacity: 0;
     transform: translateY(12px);
-margin-bottom: 20px; /* Espace vertical entre les cartes projets */
-    transition:
-        opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
-        transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+    margin-bottom: 20px;
+    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
     display: block;
+}
 
-}
-/* Par défaut sur mobile, on peut garder un aspect assez homogène pour la lisibilité */
-.grid-item.tall img {
-    aspect-ratio: 4 / 5;
-}
-.grid-item.portrait img {
-    aspect-ratio: 4 / 5;
-}
-.grid-item.square img {
-    aspect-ratio: 1 / 1;
-}
-.grid-item.wide img {
-    aspect-ratio: 16 / 10; /* Un peu plus horizontal */
-}
+.grid-item.tall img { aspect-ratio: 4 / 5; }
+.grid-item.portrait img { aspect-ratio: 4 / 5; }
+.grid-item.square img { aspect-ratio: 1 / 1; }
+.grid-item.wide img { aspect-ratio: 16 / 10; }
 
 .grid-item img {
-width: 100%;
-    height: 100%; /* Important : pour remplir le container du ratio */
-    object-fit: cover; /* Recadre proprement sans déformer l'image */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .grid-item a {
     display: block;
     width: 100%;
     height: auto;
-
 }
 
-/* --- ADAPTATION DESKTOP POUR LA GALERIE --- */
 @media (min-width: 768px) {
     .gallery {
         padding: 0 var(--pad-lg);
     }
 
-    /* On utilise un système à deux colonnes équilibrées au lieu de l'auto-fit instable */
     .grid-layout {
         column-count: 2;
-        /* Passage automatique à 2 colonnes asymétriques */
         gap: 17px;
     }
 
-.grid-item {
-        margin-bottom: 17px; /* Aligne l'espace vertical avec le column-gap */
+    .grid-item {
+        margin-bottom: 17px;
     }
 
-/* Format ultra élancé (comme les visuels de votre page projet) */
-    .grid-item.tall img {
-        aspect-ratio: 6 / 9; 
-    }
-
-    /* Portrait classique et élégant */
-    .grid-item.portrait img {
-        aspect-ratio: 4 / 5;
-    }
-
-    /* Bloc carré stable */
-    .grid-item.square img {
-        aspect-ratio: 1 / 1;
-    }
-
-    /* Bloc panoramique horizontal qui va forcer le projet suivant à remonter très haut */
-    .grid-item.wide img {
-        aspect-ratio:4 / 3;
-    }
+    .grid-item.tall img { aspect-ratio: 6 / 9; }
+    .grid-item.portrait img { aspect-ratio: 4 / 5; }
+    .grid-item.square img { aspect-ratio: 1 / 1; }
+    .grid-item.wide img { aspect-ratio: 4 / 3; }
 }
 
 @media (min-width: 1024px) {
@@ -650,10 +650,7 @@ width: 100%;
     .gallery {
         padding: 0 var(--pad-lg);
     }
-
 }
-
-@media (min-width: 1280px) {}
 
 .grid-item.is-visible {
     opacity: 1 !important;
@@ -669,17 +666,9 @@ width: 100%;
     display: none;
 }
 
-.grid-item:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.grid-item:nth-child(2) {
-    transition-delay: 0.15s;
-}
-
-.grid-item:nth-child(3) {
-    transition-delay: 0.2s;
-}
+.grid-item:nth-child(1) { transition-delay: 0.1s; }
+.grid-item:nth-child(2) { transition-delay: 0.15s; }
+.grid-item:nth-child(3) { transition-delay: 0.2s; }
 
 /* ==========================================================================
    PERFECTIONNEMENT DE L'OVERLAY DE LA GALERIE D'ACCUEIL
@@ -688,13 +677,11 @@ width: 100%;
     position: absolute;
     inset: 0;
     opacity: 0;
-    /* Caché par défaut */
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 30px;
-    /* Transition pour l'apparition en fondu */
     transition: opacity 0.5s ease;
     z-index: 2;
 }
@@ -714,7 +701,8 @@ width: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
-color: var(--white);}
+    color: var(--white);
+}
 
 .project-name {
     font-family: var(--font-sans);
@@ -727,18 +715,17 @@ color: var(--white);}
 }
 
 .project-date {
-    font-family: var(--font-sans); /* Passage en Sans-Serif pour le mobile */
+    font-family: var(--font-sans);
     font-style: italic;
     font-weight: 300;
-    font-size: 10px; /* Légèrement réhaussé pour le mobile */
+    font-size: 10px;
     letter-spacing: 1.5px;
-    text-transform: uppercase; /* Donne un côté plus propre et moderne */
-    color: rgba(255, 255, 255, 0.637); /* Un blanc semi-transparent beaucoup plus lumineux que le gris actuel */
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.637);
     display: block;
     margin-top: 2px;
 }
 
-/* Effets au survol exclusifs aux ordinateurs */
 @media (hover: hover) and (min-width: 1025px) {
     .grid-item img {
         transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
@@ -753,13 +740,13 @@ color: var(--white);}
     }
 }
 
-/* Sécurité et lisibilité automatique pour les écrans tactiles & mobiles */
 @media (max-width: 1024px), (hover: none) {
     .item-overlay {
-        opacity: 1; /* Reste visible en permanence sur smartphone pour éviter de perdre l'info */
+        opacity: 1;
         background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
         padding: 20px;
     }
+
     .project-name {
         font-size: 1.1rem;
     }
@@ -827,7 +814,6 @@ footer {
     opacity: 0.9;
 }
 
-/* --- ADAPTATION DESKTOP POUR LE FOOTER --- */
 @media (min-width: 768px) {
     footer {
         padding: 20px var(--pad-md);
@@ -852,10 +838,9 @@ footer {
 }
 
 /* ==========================================================================
-   --------------- LOGIQUE TAXTILE / NO-HOVER ------------- 
+   --------------- LOGIQUE TACTILE / NO-HOVER ------------- 
    ========================================================================== */
 @media (hover: none) {
-
     .grid-item:hover img,
     .project-item:hover img {
         transform: none !important;
